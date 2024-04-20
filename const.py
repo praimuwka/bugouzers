@@ -1,0 +1,1 @@
+PLAN_PATH = "C:\\Users\\Роман\\PycharmProjects\\StudentService\\base_plan.json"

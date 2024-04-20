@@ -6,10 +6,12 @@ from pydantic import BaseModel, field_validator
 
 
 class ExamNameEnum(str, Enum):
-    math = "math"
-    rus_lang = "rus"
-    physic = "phys"
-    informatics = "informatics"
+    math = "Математика"
+    rus_lang = "Русский язык"
+    physic = "Физика"
+    informatics = "Информатика"
+    society = "Обществознание"
+    eng_lang = "Английский язык"
 
 class ExamInfo(BaseModel):
     name: ExamNameEnum
@@ -17,6 +19,7 @@ class ExamInfo(BaseModel):
 
 class EntrantSchema(BaseModel):
     is_budget:bool
+    price:int = 0
     jobs: Optional[List[str]] = None
     exams: List[ExamInfo]
     @field_validator("exams")
