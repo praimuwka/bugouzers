@@ -1,10 +1,23 @@
 <template>
-  <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </nav>
-  <router-view/>
+  <div id="app">
+    <NavMenu :navList="navItems" />
+    <router-view class="router-view"/>
+    <PageBackground/>
+  </div>
 </template>
+
+<script setup >
+import NavMenu from './components/NavMenu.vue';
+import PageBackground from './components/PageBackground.vue';
+
+const navItems = [
+  { label: 'Поступи куда-то', url: '/' },
+  { label: 'Мониторь абитурь', url: '/monitor' },
+  { label: 'Смени вектор', url: '/transaction' },
+  { label: 'Найди точку', url: '/neroute' },
+  { label: 'Учись больше', url: '/learnmore' },
+];
+</script>
 
 <style lang="scss">
 #app {
@@ -13,18 +26,25 @@
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+  position: relative;
+  margin: 0;
+  padding: 0;
+  z-index: 1;
 }
 
-nav {
-  padding: 30px;
+.big_smile {
+  width: 12%;
+  height: 12%;
+}
 
-  a {
-    font-weight: bold;
-    color: #2c3e50;
+button {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 10;
+}
 
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
+.router-view {
+  margin-left: 100px;
 }
 </style>
